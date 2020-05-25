@@ -1,5 +1,6 @@
 package com.htecgroup.flightadvisor.domain.projection;
 
+@SuppressWarnings("unused")
 public interface CityCommentProjection {
     Long getCommentId();
 

@@ -30,7 +30,7 @@ public interface CityRepository extends JpaRepository<City, Long> {
             "                                   ORDER BY created_date DESC\n" +
             "                                   LIMIT :numberOfComments)\n" +
             "         left join APPLICATION_USER AU on com.USER_ID = AU.ID\n" +
-            "where c.NAME ilike CONCAT('%', :cityName, '%');\n", nativeQuery = true)
+            "where c.NAME ilike CONCAT('%', :cityName, '%');", nativeQuery = true)
     //@formatter:on
     List<CityCommentProjection> getCitiesWithComments(@Param("numberOfComments") Integer numberOfComments, @Param("cityName") String cityName);
 }
