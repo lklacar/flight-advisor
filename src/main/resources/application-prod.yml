@@ -18,8 +18,8 @@ spring:
             enabled: false
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/flight_advisor?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
-        username: root
+        url: jdbc:h2:file:./target/h2db/db/flight_advisor;DB_CLOSE_DELAY=-1
+        username: sa
         password:
         hikari:
             poolName: Hikari
@@ -31,6 +31,11 @@ spring:
                 useServerPrepStmts: true
     jpa:
         show-sql: false
+    data:
+        neo4j:
+            uri: bolt://localhost:7687
+            username: neo4j
+            password: secret
 
 application:
     security:
