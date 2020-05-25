@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public interface AirportRepository extends CrudRepository<Airport, String> {
@@ -15,6 +16,6 @@ public interface AirportRepository extends CrudRepository<Airport, String> {
     @Query("MATCH (from:Airport{cityId: $fromCityId}), (end:Airport{cityId: $toCityId}) " +
            "CALL apoc.algo.dijkstra(from, end, 'ROUTE>', 'price') " +
            "YIELD path, weight as totalPrice RETURN nodes(path) AS airports, totalPrice")
-    List<Map<String, Object>> findCheapestFlights(Long fromCityId, Long toCityId);
+    Optional<List<Map<String, Object>>> findCheapestFlights(Long fromCityId, Long toCityId);
     // @formatter:on
 }

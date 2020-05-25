@@ -18,7 +18,9 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public Map<String, Object> findCheapestRoutes(Long fromCityId, Long toCityId) {
-        var res = airportRepository.findCheapestFlights(fromCityId, toCityId);
+        var res = airportRepository.findCheapestFlights(fromCityId, toCityId)
+                .orElseThrow(() -> new NotFoundException("Flights not found"));
+
         return res.stream()
                 .min(Comparator.comparingDouble(flight -> (Double) flight.get("totalPrice")))
                 .orElseThrow(() -> new NotFoundException("Flights not found"));
