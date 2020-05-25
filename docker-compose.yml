@@ -1,0 +1,19 @@
+
+version: '3.3'
+services:
+
+    flight-advisor:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "8080:8080"
+
+    graph-database:
+        image: "neo4j:4.0.4"
+        environment:
+            NEO4J_AUTH: neo4j/secret
+            NEO4JLABS_PLUGINS: '["apoc"]'
+        ports:
+            - "7474:7474"
+            - "7687:7687"
