@@ -3,6 +3,7 @@ package com.htecgroup.flightadvisor.repository;
 import com.htecgroup.flightadvisor.domain.Airport;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,6 +17,6 @@ public interface AirportRepository extends CrudRepository<Airport, String> {
     @Query("MATCH (from:Airport{cityId: $fromCityId}), (end:Airport{cityId: $toCityId}) " +
            "CALL apoc.algo.dijkstra(from, end, 'ROUTE>', 'price') " +
            "YIELD path, weight as totalPrice RETURN nodes(path) AS airports, totalPrice")
-    Optional<List<Map<String, Object>>> findCheapestFlights(Long fromCityId, Long toCityId);
+    List<Map<String, Object>> findCheapestFlights(@Param("fromCityId") Long fromCityId, @Param("toCityId") Long toCityId);
     // @formatter:on
 }
