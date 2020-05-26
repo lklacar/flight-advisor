@@ -1,4 +1,3 @@
-
 # Flight Advisor API Service
 
 ## Description
@@ -69,3 +68,10 @@ The service exposes an H2 console on port 9093.
 - URL: jdbc:h2:tcp://localhost:9093/./target/h2db/db/flight_advisor
 - User: sa
 - Password: **(empty)**
+
+## Neo4j dashboard
+
+This service uses Neo4j for storing airports and routes. We can use neo4j dashboard
+to get a visual overview of the data.
+
+Neo4j dashboard: http://localhost:7474/browser/
