@@ -41,3 +41,4 @@ application:
     security:
         base64-secret: YjM4YTU0NTEzNWVlMTEwZGY4YTMwMzZiZGExZmMzZDkzZGM3Y2UwYWQ3MGQwMTc4Y2Q1MjM1NThkZGQzNzY1MGQ3OWEzMGI3ZjUzMDRlMjA0MzEyNWE1NzNkNDRlMWFiNDIzYTg2ZTI5NjFiZDE0NjI2MTUyYzQzODBlYzk2NWY=
         token-validity-in-seconds: 86400
+    upload-directory: data
